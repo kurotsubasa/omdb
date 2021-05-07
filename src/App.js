@@ -9,19 +9,25 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+import Movies from './components/Movies/Movies.js'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       user: null,
-      msgAlerts: []
+      msgAlerts: [],
+      selected: []
     }
   }
 
   setUser = user => this.setState({ user })
 
   clearUser = () => this.setState({ user: null })
+
+  setSelected = (id) => {
+    this.setState({ selected: id })
+  }
 
   deleteAlert = (id) => {
     this.setState((state) => {
@@ -64,6 +70,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/movies' render={() => (
+            <Movies msgAlert={this.msgAlert} user={user} selected={this.state.selected} setSelected={this.setSelected} />
           )} />
         </main>
       </Fragment>
