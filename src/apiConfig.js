@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
-  production: 'http://www.omdbapi.com/?i=tt3896198&apikey=ed03f20d',
-  development: 'http://www.omdbapi.com/?i=tt3896198&apikey=ed03f20d'
+  production: 'http://www.omdbapi.com/?',
+  development: 'http://www.omdbapi.com/?'
 }
 
 if (window.location.hostname === 'localhost') {
