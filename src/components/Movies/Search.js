@@ -12,10 +12,11 @@ const Search = props => {
 
   const handleChange = event => {
     setMovie({ ...movie, [event.target.name]: event.target.value })
+    handleSubmit()
   }
 
   const handleSubmit = event => {
-    event.preventDefault()
+    // event.preventDefault()
     console.log(movie)
     const urlMovie = movie.title.replace(/ /g, '+')
 

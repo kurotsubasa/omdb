@@ -9,17 +9,16 @@ import Nominate from './Nominate.js'
 const Movies = props => {
   const [newMovie, setNewMovie] = useState(null)
   const [nominations, setNominations] = useState([])
+  const [dupe, setDupe] = useState(false)
   useEffect(() => {
     setNominations(props.selected)
   }, [])
 
   console.log(newMovie)
   console.log(nominations)
-  const yourMovies = nominations.map(nom => {
-    return (
-      <li key={nom}>{nom}</li>
-    )
-  })
+  // const yourMovies = nominations.map(nom => (
+  //   <li key={nom}>{nom}</li>
+  // ))
   // const foundMovie = () => {
   //   return (
   //     <tbody className="lay" key={newMovie.imdbId}>
@@ -36,6 +35,11 @@ const Movies = props => {
       <Layout className="lay">
         <Search movies={newMovie} setMovies={setNewMovie} msgAlert={props.msgAlert}>
         </Search>
+        <ul>
+          {nominations.length < 1 ? <li>no nominations</li> : nominations.map(nom => (
+            <li key={nom}>{nom}</li>
+          )) }
+        </ul>
         <table className="table">
           <thead>
             <tr className="lay">
@@ -48,20 +52,17 @@ const Movies = props => {
             <tr>
               <td>{newMovie.Title || newMovie.Error}</td>
               <td>{newMovie.Year}</td>
-              <td><Nominate newMovie={newMovie} nominations={nominations} setNominations={setNominations} msgAlert={props.msgAlert}></Nominate></td>
+              <td><Nominate newMovie={newMovie} nominations={nominations} setNominations={setNominations} msgAlert={props.msgAlert} dupe={dupe} setDupe={setDupe}></Nominate></td>
             </tr>
           </tbody>
         </table>
-        <ul>
-          {yourMovies}
-        </ul>
       </Layout>
     )
   }
 
   return (
     <Layout className="lay">
-      <Search movies={newMovie} setMovies={setNewMovie} msgAlert={props.msgAlert}>
+      <Search movies={newMovie} setMovies={setNewMovie} msgAlert={props.msgAlert} dupe={dupe} setDupe={setDupe}>
       </Search>
     </Layout>
   )

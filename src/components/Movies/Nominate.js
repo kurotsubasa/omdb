@@ -1,8 +1,7 @@
 import Button from 'react-bootstrap/Button'
-import React, { useState } from 'react'
+import React from 'react'
 
 const Nominate = props => {
-  const [dupe, setDupe] = useState(false)
   console.log(props.newMovie)
   console.log(props.nominations)
   const list = props.nominations
@@ -14,7 +13,7 @@ const Nominate = props => {
           message: 'Try another one',
           variant: 'danger'
         })
-        setDupe(true)
+        props.setDupe(true)
         return ('rip')
       }
     }
@@ -24,7 +23,7 @@ const Nominate = props => {
 
   return (
     <div>
-      {dupe === true ? '' : <Button variant="primary" onClick={() => { selector(props.newMovie) }}>Nominate</Button>}
+      {props.dupe === true ? <Button variant="secondary" onClick={() => { props.setDupe(false) }}>Is this not nominated yet?</Button> : <Button variant="primary" onClick={() => { selector(props.newMovie) }}>Nominate</Button>}
     </div>
   )
 }
