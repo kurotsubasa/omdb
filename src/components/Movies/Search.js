@@ -34,9 +34,14 @@ const Search = props => {
       }))
   }
 
+  const resetSearch = (e) => {
+    e.preventDefault()
+    e.target.form.elements.title.value = ''
+  }
+
   return (
     <Layout>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} onReset={resetSearch}>
         <Form.Control
           placeholder="Your movie"
           value={movie.title}
@@ -44,6 +49,7 @@ const Search = props => {
           onChange={handleChange}
         />
         <Button type="submit">Submit</Button>
+        <Button onClick={resetSearch} type="submit" >Clear search</Button>
       </Form>
     </Layout>
   )
