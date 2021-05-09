@@ -1,4 +1,5 @@
 shopify internship application: omdb
+document and requirements listed below
 
 
 UX Developer Intern & Web Developer Intern Challenge - Fall 2021
@@ -41,3 +42,8 @@ Please submit your application via “Apply Now” and make sure you include:
   A link to your hosted code so we can test it (Free hosting available via: Github pages, Netlify and heroku)
   A link to your Github repository containing the code
   Any other notes you'd like us to consider alongside the page
+
+
+Notes:
+  There seem to be a number of unsolved issues that I suspect are related to the asynchronous nature of application
+  For future versions, utilizing a second API for user profiles would allow users to save their nomination lists as well as shareable links
