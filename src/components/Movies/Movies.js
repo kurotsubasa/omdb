@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import Layout from '../shared/Layout'
-// import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button'
 import Search from './Search.js'
 import Nominate from './Nominate.js'
 
@@ -11,7 +11,7 @@ const Movies = props => {
   const [nominations, setNominations] = useState([])
   const [dupe, setDupe] = useState(false)
   useEffect(() => {
-    setNominations(props.selected)
+    // setNominations(props.selected)
   }, [])
 
   console.log(newMovie)
@@ -30,6 +30,22 @@ const Movies = props => {
   //   )
   // }
 
+  // const remover = (movie) => {
+  //   for (let i = 0; i < nominations.length; i++) {
+  //     if (movie === nominations[i]) {
+  //       nominations.splice(i, 1)
+  //     }
+  //   }
+  // }
+
+  if (nominations.length === 5) {
+    props.msgAlert({
+      heading: 'You have nominated 5 movies!',
+      message: 'You have nominated 5 movies now!',
+      variant: 'success'
+    })
+  }
+
   if (newMovie) {
     return (
       <Layout className="lay">
@@ -37,7 +53,14 @@ const Movies = props => {
         </Search>
         <ul>
           {nominations.length < 1 ? <li>no nominations</li> : nominations.map(nom => (
-            <li key={nom}>{nom}</li>
+            <li key={nom}>{nom} <Button variant="secondary" onClick={function (nom) {
+              console.log(nom)
+              for (let i = 0; i < nominations.length; i++) {
+                if (nom === nominations[i]) {
+                  nominations.splice(i, 1)
+                }
+              }
+            }}>Remove Nomination</Button></li>
           )) }
         </ul>
         <table className="table">

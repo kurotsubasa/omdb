@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 
 import apiUrl from '../../apiConfig'
 import apiKey from '../../apiKey'
-import Layout from '../shared/Layout'
+// import Layout from '../shared/Layout'
 
 const Search = props => {
   const [movie, setMovie] = useState({ title: '' })
@@ -41,18 +41,16 @@ const Search = props => {
   }
 
   return (
-    <Layout>
-      <Form onSubmit={handleSubmit} onReset={resetSearch}>
-        <Form.Control
-          placeholder="Your movie"
-          value={movie.title}
-          name="title"
-          onChange={handleChange}
-        />
-        <Button type="submit">Submit</Button>
-        <Button onClick={resetSearch} type="submit" >Clear search</Button>
-      </Form>
-    </Layout>
+    <Form onSubmit={handleSubmit} onReset={resetSearch}>
+      <Form.Control
+        placeholder="Your movie"
+        value={movie.title}
+        name="title"
+        onChange={handleChange}
+      />
+      <Button type="submit">Submit</Button>
+      <Button onClick={resetSearch} type="submit" >Clear search</Button>
+    </Form>
   )
 }
 
