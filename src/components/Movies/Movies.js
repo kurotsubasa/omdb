@@ -52,16 +52,21 @@ const Movies = props => {
         <Search movies={newMovie} setMovies={setNewMovie} msgAlert={props.msgAlert}>
         </Search>
         <ul>
-          {nominations.length < 1 ? <li>no nominations</li> : nominations.map(nom => (
-            <li key={nom}>{nom} <Button variant="secondary" onClick={function (nom) {
-              console.log(nom)
+          {nominations.length < 1 ? <li>no nominations</li> : nominations.map(nom => {
+            const remover = (mov) => {
               for (let i = 0; i < nominations.length; i++) {
-                if (nom === nominations[i]) {
+                if (mov === nominations[i]) {
                   nominations.splice(i, 1)
                 }
               }
-            }}>Remove Nomination</Button></li>
-          )) }
+            }
+
+            const removerButton = <Button variant="secondary" onClick={remover(nom)}>Remove</Button>
+            return (
+              <li key={nom}>{nom}{removerButton}</li>
+            )
+          })
+          }
         </ul>
         <table className="table">
           <thead>
