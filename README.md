@@ -46,4 +46,4 @@ Please submit your application via “Apply Now” and make sure you include:
 
 Notes:
   There seem to be a number of unsolved issues that I suspect are related to the asynchronous nature of application
-  For future versions, utilizing a second API for user profiles would allow users to save their nomination lists as well as shareable links
+  For future versions, utilizing a second API for user profiles would allow users to save their nomination lists as well as shareable links  
